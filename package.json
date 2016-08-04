@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Xcraft developpers helpers",
   "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,9 +14,9 @@
     "devel",
     "helpers"
   ],
-  "repository" : {
-    "type" : "file",
-    "url" : "lib/xcraft-core-devel"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xcraft-Inc/xcraft-core-devel.git"
   },
   "author": "Mathieu Schroeter",
   "license": "MIT",
@@ -23,5 +26,8 @@
     "xcraft-core-fs": "0.1.0",
     "xcraft-core-platform": "0.1.0"
   },
-  "devDependencies": {}
+  "bugs": {
+    "url": "https://github.com/Xcraft-Inc/xcraft-core-activity/devel"
+  },
+  "homepage": "https://github.com/Xcraft-Inc/xcraft-core-devel#readme"
 }

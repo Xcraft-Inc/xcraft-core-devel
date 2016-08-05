@@ -12,7 +12,9 @@
   "keywords": [
     "xcraft",
     "devel",
-    "helpers"
+    "helpers",
+    "patch",
+    "diff"
   ],
   "repository": {
     "type": "git",

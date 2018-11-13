@@ -9,13 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "xcraft",
-    "devel",
-    "helpers",
-    "patch",
-    "diff"
-  ],
+  "keywords": ["xcraft", "devel", "helpers", "patch", "diff"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Xcraft-Inc/xcraft-core-devel.git"
@@ -32,6 +26,6 @@
   },
   "homepage": "https://github.com/Xcraft-Inc/xcraft-core-devel#readme",
   "devDependencies": {
-    "xcraft-dev-rules": "^0.2.0"
+    "xcraft-dev-rules": "^0.3.0"
   }
 }

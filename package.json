@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^1.4.0",
-    "xcraft-core-fs": "^1.0.0",
+    "xcraft-core-fs": "^2.0.0",
     "xcraft-core-platform": "^1.0.0"
   },
   "bugs": {

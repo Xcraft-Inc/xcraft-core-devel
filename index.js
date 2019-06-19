@@ -10,8 +10,7 @@ exports.patch = function(srcDir, patchFile, stripNum, response, callback) {
   var spawn = require('child_process').spawn;
   var patch = spawn('patch', ['-p' + stripNum]);
 
-  fs
-    .createReadStream(patchFile)
+  fs.createReadStream(patchFile)
     .on('data', function(data) {
       patch.stdin.write(data);
     })

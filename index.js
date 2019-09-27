@@ -14,8 +14,7 @@ exports.patch = function(srcDir, patchFile, stripNum, resp, callback) {
     .on('data', function(data) {
       patch.stdin.write(data);
     })
-    .on('close', function(code) {
-      /* jshint ignore:line */
+    .on('close', function() {
       patch.stdin.end();
     });
 

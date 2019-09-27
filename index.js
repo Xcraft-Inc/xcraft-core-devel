@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.patch = function(srcDir, patchFile, stripNum, response, callback) {
+exports.patch = function(srcDir, patchFile, stripNum, resp, callback) {
   var currentDir = process.cwd();
   process.chdir(srcDir);
 
@@ -26,7 +26,7 @@ exports.patch = function(srcDir, patchFile, stripNum, response, callback) {
       .split('\n')
       .forEach(function(line) {
         if (line.trim().length) {
-          response.log.verb(line);
+          resp.log.verb(line);
         }
       });
   });
@@ -38,7 +38,7 @@ exports.patch = function(srcDir, patchFile, stripNum, response, callback) {
       .split('\n')
       .forEach(function(line) {
         if (line.trim().length) {
-          response.log.err(line);
+          resp.log.err(line);
         }
       });
   });
@@ -49,7 +49,7 @@ exports.patch = function(srcDir, patchFile, stripNum, response, callback) {
   });
 };
 
-exports.autoPatch = function(patchesDir, srcDir, response, callback) {
+exports.autoPatch = function(patchesDir, srcDir, resp, callback) {
   var async = require('async');
 
   if (!fs.existsSync(patchesDir)) {
@@ -73,10 +73,10 @@ exports.autoPatch = function(patchesDir, srcDir, response, callback) {
   async.eachSeries(
     list,
     function(file, callback) {
-      response.log.info('apply patch %s in %s', file, srcDir);
+      resp.log.info('apply patch %s in %s', file, srcDir);
       var patchFile = path.join(patchesDir, file);
 
-      exports.patch(srcDir, patchFile, 1, response, function(err) {
+      exports.patch(srcDir, patchFile, 1, resp, function(err) {
         callback(err ? 'patch failed: ' + file + ' ' + err : null);
       });
     },

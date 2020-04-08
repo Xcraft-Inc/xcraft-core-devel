@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.patch = function(srcDir, patchFile, stripNum, resp, callback) {
+exports.patch = function (srcDir, patchFile, stripNum, resp, callback) {
   var currentDir = process.cwd();
   process.chdir(srcDir);
 
@@ -11,44 +11,44 @@ exports.patch = function(srcDir, patchFile, stripNum, resp, callback) {
   var patch = spawn('patch', ['-p' + stripNum]);
 
   fs.createReadStream(patchFile)
-    .on('data', function(data) {
+    .on('data', function (data) {
       patch.stdin.write(data);
     })
-    .on('close', function() {
+    .on('close', function () {
       patch.stdin.end();
     });
 
-  patch.stdout.on('data', function(data) {
+  patch.stdout.on('data', function (data) {
     data
       .toString()
       .replace(/\r/g, '')
       .split('\n')
-      .forEach(function(line) {
+      .forEach(function (line) {
         if (line.trim().length) {
           resp.log.verb(line);
         }
       });
   });
 
-  patch.stderr.on('data', function(data) {
+  patch.stderr.on('data', function (data) {
     data
       .toString()
       .replace(/\r/g, '')
       .split('\n')
-      .forEach(function(line) {
+      .forEach(function (line) {
         if (line.trim().length) {
           resp.log.err(line);
         }
       });
   });
 
-  patch.on('close', function(code) {
+  patch.on('close', function (code) {
     process.chdir(currentDir);
     callback(code === 0 ? null : 'rc: ' + code);
   });
 };
 
-exports.autoPatch = function(patchesDir, srcDir, resp, callback) {
+exports.autoPatch = function (patchesDir, srcDir, resp, callback) {
   var async = require('async');
 
   if (!fs.existsSync(patchesDir)) {
@@ -71,15 +71,15 @@ exports.autoPatch = function(patchesDir, srcDir, resp, callback) {
 
   async.eachSeries(
     list,
-    function(file, callback) {
+    function (file, callback) {
       resp.log.info('apply patch %s in %s', file, srcDir);
       var patchFile = path.join(patchesDir, file);
 
-      exports.patch(srcDir, patchFile, 1, resp, function(err) {
+      exports.patch(srcDir, patchFile, 1, resp, function (err) {
         callback(err ? 'patch failed: ' + file + ' ' + err : null);
       });
     },
-    function(err) {
+    function (err) {
       callback(err);
     }
   );

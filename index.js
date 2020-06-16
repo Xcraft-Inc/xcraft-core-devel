@@ -59,10 +59,12 @@ exports.autoPatch = function (patchesDir, srcDir, resp, callback) {
   var xFs = require('xcraft-core-fs');
   var xPlatform = require('xcraft-core-platform');
 
-  var list = xFs.ls(
-    patchesDir,
-    new RegExp('^(?:[0-9]+|' + xPlatform.getOs() + '-).*.(?:patch|diff)$')
-  );
+  var list = xFs
+    .ls(
+      patchesDir,
+      new RegExp('^(?:[0-9]+|' + xPlatform.getOs() + '-).*.(?:patch|diff)$')
+    )
+    .sort();
 
   if (!list.length) {
     callback();

@@ -8,7 +8,11 @@ exports.patch = function (srcDir, patchFile, stripNum, resp, callback) {
   process.chdir(srcDir);
 
   var spawn = require('child_process').spawn;
-  var patch = spawn('patch', ['-p' + stripNum]);
+
+  let bin = 'patch';
+  const ext = /^win/.test(process.platform) ? '.exe' : '';
+  bin += ext;
+  const patch = spawn(bin, ['-p' + stripNum]);
 
   fs.createReadStream(patchFile)
     .on('data', function (data) {

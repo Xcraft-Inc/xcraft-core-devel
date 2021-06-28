@@ -52,7 +52,13 @@ exports.patch = function (srcDir, patchFile, stripNum, resp, callback) {
   });
 };
 
-exports.autoPatch = function (patchesDir, srcDir, resp, callback) {
+exports.autoPatch = function (
+  patchesDir,
+  srcDir,
+  distribution,
+  resp,
+  callback
+) {
   var async = require('async');
 
   if (!fs.existsSync(patchesDir)) {
@@ -66,7 +72,11 @@ exports.autoPatch = function (patchesDir, srcDir, resp, callback) {
   var list = xFs
     .ls(
       patchesDir,
-      new RegExp('^(?:[0-9]+|' + xPlatform.getOs() + '-).*.(?:patch|diff)$')
+      new RegExp(
+        `^(?:[0-9]+|${xPlatform.getOs()}-${
+          distribution ? `|${distribution.replace('/', '')}-` : ''
+        }).*.(?:patch|diff)$`
+      )
     )
     .sort();
 

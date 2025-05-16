@@ -85,14 +85,14 @@ Ce fichier expose les fonctions principales pour l'application de patches.
   - `srcDir` : Répertoire source où appliquer le patch
   - `patchFile` : Chemin vers le fichier de patch à appliquer
   - `stripNum` : Nombre de segments de chemin à ignorer (option `-p` de la commande patch)
-  - `resp` : Contexte de de réponse de quête Xcraft
+  - `resp` : Contexte de réponse de quête Xcraft
   - `callback` : Fonction appelée à la fin avec une erreur ou null
 
 - **`autoPatch(patchesDir, srcDir, distribution, resp, callback)`** - Applique automatiquement tous les patches pertinents d'un répertoire à un répertoire source. Les patches sont appliqués dans l'ordre alphabétique et peuvent être spécifiques à une plateforme ou une distribution.
   - `patchesDir` : Répertoire contenant les fichiers de patch
   - `srcDir` : Répertoire source où appliquer les patches
   - `distribution` : Distribution cible (ex: 'debian')
-  - `resp` : Contexte de de réponse de quête Xcraft
+  - `resp` : Contexte de réponse de quête Xcraft
   - `callback` : Fonction appelée à la fin avec une erreur ou null
 
 ## Conventions de nommage des patches

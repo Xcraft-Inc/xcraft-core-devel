@@ -4,6 +4,16 @@
 
 Le module `xcraft-core-devel` fournit des outils d'aide au développement pour l'écosystème Xcraft. Il propose principalement des fonctionnalités pour appliquer des patches à des fichiers source, facilitant ainsi la maintenance et l'adaptation du code selon les plateformes et distributions.
 
+## Sommaire
+
+- [Structure du module](#structure-du-module)
+- [Fonctionnement global](#fonctionnement-global)
+- [Exemples d'utilisation](#exemples-dutilisation)
+- [Interactions avec d'autres modules](#interactions-avec-dautres-modules)
+- [Détails des sources](#détails-des-sources)
+- [Conventions de nommage des patches](#conventions-de-nommage-des-patches)
+- [Fonctionnement technique](#fonctionnement-technique)
+
 ## Structure du module
 
 Le module est composé de deux fonctions principales :
